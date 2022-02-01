@@ -15,6 +15,8 @@ https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
 
 Things to do for implemention
 - [x] Implement ABL stretching function
+  - [ ] TODO: change stretching to constant after some height...
+- [ ] Make a copy of KOmegaSST called KOmegaSSTABL
 - [ ] Implement ABL initial condition
   - [ ] Edit `ABL::initialize_fields`, include SDR
   
