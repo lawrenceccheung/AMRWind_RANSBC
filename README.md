@@ -13,7 +13,7 @@ https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
 
 ## Things to do
 
-Things to do for implemention
+### Things to do for implemention
 - [x] Implement ABL stretching function
   - [ ] TODO: change stretching to constant after some height...
 - [x] Make a copy of KOmegaSST called KOmegaSSTABL
@@ -28,7 +28,12 @@ Things to do for implemention
   - [ ] Fill in ABLTKEWallFunc
   - [ ] Fill in ABLSDRWallFunc
 
-Things to do for testing  
+### Things to do for testing  
 **Basic testing**
-- [ ] Create test harness for KOmegaSSTABL+wall model (0 iteration test case)
+
+- [ ] Create test harness for KOmegaSSTABL+wall model (proper inputs
+  for 1 iteration test case, no mesh mapping)
+
+- [ ] Create test harness for KOmegaSSTABL+wall model+mesh mapping
+  (proper inputs for 1 iteration test case, with mesh mapping)
 
