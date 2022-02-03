@@ -21,8 +21,14 @@ Things to do for implemention
   - [ ] Edit `ABL::initialize_fields`, include SDR
   
 - [ ] Make changes to wall function BC
+  - [x] Add ABLTKEWallFunc/ABLSDRWallFunc infrastructure in ABLWallFunction.cpp
   - [ ] Edit ABL constructor to include RANS ABL inputs/capability
   - [ ] Register TKE/SDR wall functions in ABL::post_init_actions()
   - [ ] Edit ABLWallFunction::init_log_lawHeight()
   - [ ] Fill in ABLTKEWallFunc
   - [ ] Fill in ABLSDRWallFunc
+
+Things to do for testing  
+**Basic testing**
+- [ ] Create test harness for KOmegaSSTABL+wall model (0 iteration test case)
+
