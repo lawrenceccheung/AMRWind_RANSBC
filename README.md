@@ -19,6 +19,11 @@ https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
 - [x] Make a copy of KOmegaSST called KOmegaSSTABL
 - [ ] Implement ABL initial condition
   - [ ] Edit `ABL::initialize_fields`, include SDR
+  - [ ] Edit `ABLFieldInit::operator()` -- include mesh mapping
+  - [ ] Edit `ABLFieldInit::operator()` -- initialize with M.O. profile?
+  - [ ] Fill in `ABLFieldInit::init_tke()` -- use a profile?
+  - [ ] Fill in `ABLFieldInit::init_sdr()` -- use a profile?
+  
   
 - [ ] Make changes to wall function BC
   - [x] Add ABLTKEWallFunc/ABLSDRWallFunc infrastructure in ABLWallFunction.cpp
