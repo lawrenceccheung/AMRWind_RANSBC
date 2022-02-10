@@ -33,10 +33,10 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
 - [ ] Make changes to wall function BC
   - [x] Add ABLTKEWallFunc/ABLSDRWallFunc infrastructure in ABLWallFunction.cpp
   - [ ] Edit ABL constructor to include RANS ABL inputs/capability
-  - [ ] Register TKE/SDR wall functions in ABL::post_init_actions()
+  - [x] Register TKE/SDR wall functions in ABL::post_init_actions()
   - [x] Edit ABLWallFunction::init_log_lawHeight()
-  - [ ] Fill in ABLTKEWallFunc
-  - [ ] Fill in ABLSDRWallFunc
+  - [ ] Fill in ABLTKEWallFunc::wall_model()
+  - [ ] Fill in ABLSDRWallFunc::wall_model()
 
 ### Things to do for testing  
 **Basic testing**
