@@ -18,7 +18,8 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
 
 ### Things to do for implemention
 - [x] Implement ABL stretching function
-  - [ ] TODO: change stretching to constant after some height...
+  - [x] Blended stretching function defined in ABLScaling_function_blended.ipynb
+  - [ ] Implement in ABLScaling.cpp 
 - [x] Make a copy of KOmegaSST called KOmegaSSTABL
 - [ ] Implement ABL initial condition
   - [x] Edit `ABL::initialize_fields` to account for mesh mapping, sdr/tke init
