@@ -28,7 +28,7 @@ transport.laminar_prandtl = 0.7
 transport.turbulent_prandtl = 0.3333
 #turbulence.model = Smagorinsky
 #Smagorinsky_coeffs.Cs = 0.135
-turbulence.model = KOmegaSST
+turbulence.model = KOmegaSSTABL
 TKE.source_terms = KwSSTSrc
 SDR.source_terms = SDRSrc
 
