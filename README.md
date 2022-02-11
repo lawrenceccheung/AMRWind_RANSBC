@@ -41,8 +41,9 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
 ### Things to do for testing  
 **Basic testing**
 
-- [ ] Create test harness for KOmegaSSTABL+wall model (proper inputs
+- [x] Create test harness for KOmegaSSTABL+wall model (proper inputs
   for 1 iteration test case, no mesh mapping)
+  - see [abl_komegasst.i](testharness/ABL_kOmegaSST_uniform/abl_komegasst.i)
 
 - [ ] Create test harness for KOmegaSSTABL+wall model+mesh mapping
   (proper inputs for 1 iteration test case, with mesh mapping)
