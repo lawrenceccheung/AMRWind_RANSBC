@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{amsmath}
 
 \begin{document}
 \begin{center}
@@ -6,5 +7,52 @@
   AMR-Wind}{\Large\par} \par\end{center}
 
 Document all notes here.
+
+\section{RANS ABL grid stretching}
+
+\section{RANS k-$\epsilon$ ABL boundary conditions}
+
+Implemented in \texttt{MOData.cpp} as \texttt{calc\_phi\_m\_alinot()}: 
+\begin{equation}
+\phi_m\left(\zeta \right) =
+\begin{cases}
+\left( 1 - \beta_m \zeta \right)^{-1/4}, & \zeta < 0\\
+1+ \gamma_m \zeta                       & \zeta > 0\\
+\end{cases}
+\end{equation}
+
+where $\zeta=z/L$
+
+Implemented in \texttt{MOData.cpp} as \texttt{calc\_phi\_eps\_alinot()}: 
+\begin{equation}
+  \phi_\epsilon\left( \zeta \right) =
+  \begin{cases}
+    1-\zeta                            & \zeta < 0\\
+    \phi_m\left( \zeta \right) - \zeta & \zeta > 0
+  \end{cases}
+  \end{equation}
+
+The following calculations are implemented in \texttt{ShearStress.H}.
+
+As \texttt{ShearStressAlinot.calc\_mu()}
+\begin{equation}
+  \mu_{t0}(z) = \frac{\rho \kappa u_* z}{\phi_m(\zeta)}
+\end{equation}
+
+As \texttt{ShearStressAlinot.calc\_eps()}
+\begin{equation}
+  \epsilon_0(z) = \frac{u_*^3}{\kappa z} \phi_\epsilon(\zeta)
+\end{equation}
+
+As \texttt{ShearStressAlinot.calc\_tke()}
+\begin{equation}
+  k_0(z) = \sqrt{\frac{\mu_{t0}(z)\epsilon_0(z)}{\rho C_\mu}}
+\end{equation}
+
+As \texttt{ShearStressAlinot.calc\_omega()}
+\begin{equation}
+  \omega_0(z) = \frac{\epsilon_0(z)}{C_\mu k_0(z)}
+\end{equation}
+
 
 \end{document}

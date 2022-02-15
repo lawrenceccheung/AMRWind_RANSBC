@@ -35,6 +35,8 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
   - [ ] Edit ABL constructor to include RANS ABL inputs/capability
   - [x] Register TKE/SDR wall functions in ABL::post_init_actions()
   - [x] Edit ABLWallFunction::init_log_lawHeight()
+  - [ ] Add phi calculations in `MOData.H`, `MOData.cpp`.
+  - [ ] Add mu, epsilon, tke calculations in `ShearStress.H`.
   - [ ] Fill in ABLTKEWallFunc::wall_model()
   - [ ] Fill in ABLSDRWallFunc::wall_model()
 
