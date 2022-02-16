@@ -10,6 +10,82 @@ Document all notes here.
 
 \section{RANS ABL grid stretching}
 
+The physical domain coordinates $x$ and the computational domain $\xi$
+are related by the mapping function $x(\xi)$:
+
+$$
+x(\xi) = x_{geom}(\xi) (1-h(\xi)) + h(\xi) x_{const}(\xi)
+$$
+where the blend function $h(\xi)$ is defined as  
+$$
+h(\xi, \xi_T, W) = \frac{1}{2} \left( 1 + \tanh \left( \frac{\xi-\xi_T}{W} \right) \right)
+$$
+and depends on the transition location $\xi_T$ and width W.  
+$$
+\frac{d x}{d \xi} = (1-h) x'_{geom} - h' x_{geom} + h x'_{const} + h' x_{const}
+$$
+
+\subsection{Geometry growth mapping function}
+
+The geometric growth function $x_{geom}$ is defined as :  
+$$
+x_{geom}(\xi) = \frac{\Delta_0}{r}  \frac{1-r^{\xi+1}}{1-r} - \frac{\Delta_0}{r}
+$$
+
+With the first cell height $\Delta_0$ and stretch rate $r>1$ provided
+by the user.
+
+The inverse of this function is
+$$
+\xi_{inv}(x) = \frac{\ln \left( 1- (x-\Delta_0/r) \frac{r (1-r)}{\Delta_0} \right)}
+{\ln (r)}
+$$
+
+The derivative of this function is:
+$$
+\frac{d x_{geom}}{d\xi} = \frac{\Delta_0}{r (r-1)} r^{\xi-1} \ln(r)
+$$
+
+\subsection{Constant cell size mapping function}
+
+$$
+x_{const} = s(\xi-\xi_0) + L_{match}
+$$
+
+slope $s$, offset $\xi_0$, and match height $L_{match}$.
+
+To set up the constants in $x_{const}$, there are two options:
+
+1.  We can compute the $\xi$ that would correspond to $L$ input by the user:
+
+$$
+\xi_L = \textrm{int}\{ x_{inv}(L, \delta_0, r) \}
+$$
+
+2.  We can compute the $\xi$ that would correspond to $\Delta_{max}$ input by the user:
+
+$$
+\xi_L = \textrm{floor} \left[ \frac{\ln (\Delta_{max} r^2/\Delta_0)}{\ln r} \right] - 1
+$$
+
+We'll set the offset $\xi_0$=$\xi_L$. Because $\xi_L$ has been rounded to the nearest integer, we'll compute $L_{match}$ at $\xi_L$
+
+$$
+L_{match} = x_{geom}(\xi_L, \delta_0, r)
+$$
+
+And the slope will be the cell size at $\xi_L$: 
+
+$$
+s =  x_{geom}(\xi_L, \delta_0, r) -  x_{geom}(\xi_L-1, \delta_0, r)
+$$
+
+The derivative of $x_{const}$ is
+
+$$
+\frac{d x_{const}}{d\xi} = s
+$$
+
 \section{RANS k-$\epsilon$ ABL boundary conditions}
 
 Implemented in \texttt{MOData.cpp} as \texttt{calc\_phi\_m\_alinot()}: 
