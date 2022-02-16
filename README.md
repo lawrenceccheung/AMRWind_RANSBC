@@ -37,8 +37,8 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
   - [x] Edit ABLWallFunction::init_log_lawHeight()
   - [x] Add phi calculations in `MOData.H`, `MOData.cpp`.
   - [x] Add mu, epsilon, tke calculations in `ShearStress.H`.
-  - [ ] Fill in ABLTKEWallFunc::wall_model()
-  - [ ] Fill in ABLSDRWallFunc::wall_model()
+  - [x] Fill in ABLTKEWallFunc::wall_model()
+  - [x] Fill in ABLSDRWallFunc::wall_model()
 
 ### Things to do for testing  
 **Basic testing**
