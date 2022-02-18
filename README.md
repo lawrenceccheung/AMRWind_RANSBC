@@ -40,6 +40,12 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
   - [x] Fill in ABLTKEWallFunc::wall_model()
   - [x] Fill in ABLSDRWallFunc::wall_model()
 
+- [ ] Make changes for k-epsilon model
+  - [ ] Fill in `ABLFieldInit::init_eps()` -- use a profile?
+  - [x]	call init_eps() in ABL::initialize_fields()
+  - [ ] Register EPS wall functions in ABL::post_init_actions()
+  - [ ] Create ABLEPSWallFunc() in ABLWallFunction.H & fill in wall model
+
 ### Things to do for testing  
 **Basic testing**
 
