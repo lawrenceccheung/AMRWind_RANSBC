@@ -8,13 +8,17 @@ be for the k-omega RANS model.
 
 Check out the docs section for notes and literature.
 
-RANS k-omega implementation occuring in branch:
-https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
+RANS ABL k-omega model merged branch: 
+https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega_merge
 
 Branches to merge in: 
+- [x] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
+
+- [ ] https://github.com/ashesh2512/amr-wind/commits/mesh_map_turb
+- [ ] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_subsetsampling
+
+Do not merge this one (yet): 
 - https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
-- https://github.com/ashesh2512/amr-wind/commits/mesh_map_turb
-- https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_subsetsampling
 
 
 ## Things to do
