@@ -8,18 +8,25 @@ be for the k-omega RANS model.
 
 Check out the docs section for notes and literature.
 
-RANS k-omega implementation occuring in branch:
-https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
+RANS ABL k-omega model merged branch: 
+https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega_merge
 
-Must also merge in changes from branch:  
-https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
+Branches to merge in: 
+- [x] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
+
+- [ ] https://github.com/ashesh2512/amr-wind/commits/mesh_map_turb
+- [ ] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_subsetsampling
+
+Do not merge this one (yet): 
+- https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
+
 
 ## Things to do
 
 ### Things to do for implemention
 - [x] Implement ABL stretching function
   - [x] Blended stretching function defined in ABLScaling_function_blended.ipynb
-  - [ ] Implement in ABLScaling.cpp 
+  - [x] Implement in ABLScaling.cpp 
 - [x] Make a copy of KOmegaSST called KOmegaSSTABL
 - [ ] Implement ABL initial condition
   - [x] Edit `ABL::initialize_fields` to account for mesh mapping, sdr/tke init
@@ -30,9 +37,10 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
   - [ ] Fill in `ABLFieldInit::init_sdr()` -- use a profile?
   
   
-- [ ] Make changes to wall function BC
+- [x] Make changes to wall function BC
   - [x] Add ABLTKEWallFunc/ABLSDRWallFunc infrastructure in ABLWallFunction.cpp
-  - [ ] Edit ABL constructor to include RANS ABL inputs/capability
+  - [x] Edit ABL constructor to include RANS ABL inputs/capability
+    - Cmu is now linked to `beta_star` in RANS variables
   - [x] Register TKE/SDR wall functions in ABL::post_init_actions()
   - [x] Edit ABLWallFunction::init_log_lawHeight()
   - [x] Add phi calculations in `MOData.H`, `MOData.cpp`.
@@ -43,8 +51,8 @@ https://github.com/ashesh2512/amr-wind/tree/mesh_map_multi_lev
 - [ ] Make changes for k-epsilon model
   - [ ] Fill in `ABLFieldInit::init_eps()` -- use a profile?
   - [x]	call init_eps() in ABL::initialize_fields()
-  - [ ] Register EPS wall functions in ABL::post_init_actions()
-  - [ ] Create ABLEPSWallFunc() in ABLWallFunction.H & fill in wall model
+  - [x] Register EPS wall functions in ABL::post_init_actions()
+  - [x] Create ABLEPSWallFunc() in ABLWallFunction.H & fill in wall model
 
 ### Things to do for testing  
 **Basic testing**
