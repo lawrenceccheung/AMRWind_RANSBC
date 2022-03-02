@@ -63,5 +63,5 @@ Do not merge this one (yet):
 
 - [x] Create test harness for KOmegaSSTABL+wall model+mesh mapping
   (proper inputs for 1 iteration test case, with mesh mapping)
-  - see [abl_komegasst_meshmap.i](testharness/ABL_kOmegaSST_meshmap/abl_komegasst_meshmap.i)
+  - see [abl_komegasst_meshmap.i](testharness/ABL_kOmegaSST_meshmap/abl_komegasstabl_meshmap.i)
 
