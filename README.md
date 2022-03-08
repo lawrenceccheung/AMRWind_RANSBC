@@ -74,3 +74,8 @@ Do not merge this one (yet):
   (proper inputs for 1 iteration test case, with mesh mapping)
   - see [abl_komegasst_meshmap.i](testharness/ABL_kOmegaSST_meshmap/abl_komegasstabl_meshmap.i)
 
+**SWIFT test cases**
+
+- [Uniform grid](SWiFT_uniform/abl_komegasstabl_meshmap.i)
+
+- [Mesh mapped](SWiFT_meshmap/abl_komegasstabl_meshmap.i)
