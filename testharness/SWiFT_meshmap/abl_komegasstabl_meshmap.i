@@ -2,19 +2,19 @@
 #            SIMULATION STOP            #
 #.......................................#
 time.stop_time               =   22000.0     # Max (simulated) time to evolve
-time.max_step                =   100           # Max number of time steps
+time.max_step                =   10           # Max number of time steps
 
 #¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨#
 #         TIME STEP COMPUTATION         #
 #.......................................#
-time.fixed_dt         =   0.1          # Use this constant dt if > 0
+time.fixed_dt         =   0.01          # Use this constant dt if > 0
 time.cfl              =   0.5          # CFL factor
 
 #¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨#
 #            INPUT AND OUTPUT           #
 #.......................................#
-time.plot_interval            =  10       # Steps between plot files
-time.checkpoint_interval      =  5       # Steps between checkpoint files
+time.plot_interval            =  -10       # Steps between plot files
+time.checkpoint_interval      =  -5       # Steps between checkpoint files
 
 #¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨#
 #               PHYSICS                 #
@@ -101,12 +101,12 @@ zhi.temperature = 0.003 # tracer is used to specify potential temperature gradie
 #.......................................#
 incflo.verbose          =   0          # incflo_level
 
-# Additional tolerance settings
-diffusion.max_coarsening_level = 0
-nodal_proj.mg_atol = 1.0e-09
-nodal_proj.verbose = 0
-#nodal_proj.bottom_solver = hypre
-nodal_proj.max_coarsening_level = 0
+# # Additional tolerance settings
+# diffusion.max_coarsening_level = 0
+# nodal_proj.mg_atol = 1.0e-09
+# nodal_proj.verbose = 0
+# #nodal_proj.bottom_solver = hypre
+# nodal_proj.max_coarsening_level = 0
 
 mac_proj.mg_rtol = 1.0e-11
 mac_proj.mg_atol = 1.0e-09
@@ -115,7 +115,7 @@ mac_proj.do_semicoarsening = true
 mac_proj.bottom_verbose = 0
 mac_proj.max_coarsening_level = 0
 mac_proj.bottom_rtol = 1.0e-12
-mac_proj.bottom_atol = 1.0e-16
+mac_proj.bottom_atol = 1.0e-12 #1.0e-16
 
 hypre.hypre_solver = GMRES
 hypre.hypre_preconditioner = BoomerAMG
