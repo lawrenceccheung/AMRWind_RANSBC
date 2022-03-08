@@ -76,6 +76,6 @@ Do not merge this one (yet):
 
 **SWIFT test cases**
 
-- [Uniform grid](SWiFT_uniform/abl_komegasstabl_meshmap.i)
+- [Uniform grid](testharness/SWiFT_uniform/abl_komegasstabl_meshmap.i)
 
-- [Mesh mapped](SWiFT_meshmap/abl_komegasstabl_meshmap.i)
+- [Mesh mapped](testharness/SWiFT_meshmap/abl_komegasstabl_meshmap.i)
