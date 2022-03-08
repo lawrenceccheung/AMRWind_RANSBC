@@ -8,12 +8,21 @@ be for the k-omega RANS model.
 
 Check out the docs section for notes and literature.
 
-RANS ABL k-omega model merged branch: 
+## Branch merging
+
+### For bleeding-edge testing
+Branch with complete contributions (RANS ABL + mesh stretching):  
+https://github.com/lawrenceccheung/amr-wind/tree/ransabl_kitchensink
+
+Note: additional changes may still be needed to improve stability/fix bugs.
+
+### For PR review
+
+RANS ABL k-omega model merged branch for PR review: 
 https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega_merge
 
 Branches to merge in: 
 - [x] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_k_omega
-
 - [ ] https://github.com/ashesh2512/amr-wind/commits/mesh_map_turb
 - [ ] https://github.com/lawrenceccheung/amr-wind/tree/mesh_map_subsetsampling
 
