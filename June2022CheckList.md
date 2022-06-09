@@ -1,7 +1,7 @@
 # Checklist of runs for V&V
 
 ## Joukowski disk runs
-Take a look at https://gist.github.com/lawrenceccheung/eb0bce8b755a37b3225ee14b9c2beef7 for a sample Joukowsky disk input file name.
+Take a look at https://gist.github.com/lawrenceccheung/eb0bce8b755a37b3225ee14b9c2beef7 for a sample Joukowsky disk input file.
 
 ### "Basic checks"
 - [ ] Check epsilon
