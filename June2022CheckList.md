@@ -26,5 +26,5 @@ Take a look at https://gist.github.com/lawrenceccheung/fb52b13a9104bbf8ed840b34c
 - [ ] Run Neutral RANS ABL with uniform mesh + multiple refinement levels
   https://cee-gitlab.sandia.gov/wind/SWIFT_Neutral_WS8.7_Alpha0.14/-/blob/master/AMRWind_Precursor/precursor1/SWIFT_Neutral87_precursor.inp
   
-- [ ] Fix TKE source term for mesh mapping
-- [ ] Fix Omega source term for mesh mapping
+- [ ] Fix TKE source term for mesh mapping (LCC)
+- [ ] Fix Omega source term for mesh mapping (LCC + Nate/Neil looking at it)
