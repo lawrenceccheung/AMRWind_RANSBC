@@ -1,0 +1,158 @@
+# --- Simulation time control parameters ---
+time.stop_time                           = -100.0              # Max (simulated) time to evolve [s]
+time.max_step                            = 1000                
+time.fixed_dt                            = 0.1                 # Fixed timestep size (in seconds). If negative, then time.cfl is used
+time.checkpoint_interval                 = -1                  
+incflo.physics                           = FreeStream Actuator # List of physics models to include in simulation.
+incflo.verbose                           = 0                   
+io.check_file                            = chk                 
+incflo.use_godunov                       = true                
+incflo.godunov_type                      = ppm_nolim           
+turbulence.model                         = Laminar             
+nodal_proj.mg_rtol                       = 1e-06               
+nodal_proj.mg_atol                       = 1e-12               
+mac_proj.mg_rtol                         = 1e-06               
+mac_proj.mg_atol                         = 1e-12               
+incflo.do_initial_proj                   = 1                   
+incflo.initial_iterations                = 3                   
+nodal_proj.verbose                       = 0                   
+incflo.gravity                           = 0.0 0.0 -9.81       # Gravitational acceleration vector (x,y,z) [m/s^2]
+incflo.density                           = 1.225               # Fluid density [kg/m^3]
+transport.viscosity                      = 1e-05               # Fluid dynamic viscosity [kg/m-s]
+transport.laminar_prandtl                = 0.7                 # Laminar prandtl number
+transport.turbulent_prandtl              = 0.3333              # Turbulent prandtl number
+ConstValue.density.value                 = 1.225               
+ConstValue.velocity.value                = 1.0 0.0 0.0         
+
+# --- Geometry and Mesh ---
+geometry.prob_lo                         = -960.0 -960.0 0.0   
+geometry.prob_hi                         = 960.0 960.0 192.0   
+amr.n_cell                               = 640 640 64          # Number of cells in x, y, and z directions
+amr.max_level                            = 1                   
+geometry.is_periodic                     = 0 1 1               
+xlo.type                                 = mass_inflow         
+xlo.density                              = 1.225               
+xlo.velocity                             = 1.0 0.0 0.0         
+xhi.type                                 = pressure_outflow    
+
+# --- ABL parameters ---
+ICNS.source_terms                        =    ActuatorForcing  
+incflo.velocity                          = 1.0 0.0 0.0         
+ABLForcing.abl_forcing_height            = 0.0                 
+time.plot_interval                       = 5000                
+io.plot_file                             = plt                 
+io.outputs                               = actuator_src_term   
+io.KE_int                                = 0                   
+incflo.post_processing                   = sampling            
+
+# --- Sampling parameters ---
+sampling.output_frequency                = 20                  
+sampling.fields                          = velocity actuator_src_term
+Actuator.type                            = JoukowskyDisk       
+Actuator.JoukowskyDisk.rotor_diameter    = 27.0                
+Actuator.JoukowskyDisk.hub_height        = 32.1                
+Actuator.JoukowskyDisk.epsilon           = 0.5                 
+Actuator.JoukowskyDisk.output_frequency  = 1                   
+Actuator.JoukowskyDisk.density           = 1.225               
+Actuator.JoukowskyDisk.yaw               = 270.0               
+Actuator.JoukowskyDisk.sample_yaw        = 270.0               # Turbine sampling yaw direction [deg]
+Actuator.JoukowskyDisk.diameters_to_sample = 5.0                 # Number of rotor diameters to sample upstream for velocity
+Actuator.JoukowskyDisk.num_points_r      = 40                  # Number of radial force points to sample for velocity and force
+Actuator.JoukowskyDisk.num_points_t      = 10                  # Number of theta force points to sample for velocity and force
+Actuator.JoukowskyDisk.thrust_coeff      = 0.31 0.31 0.31      # Thrust coefficient table
+Actuator.JoukowskyDisk.angular_velocity  = 0.326 0.326 0.326   # Angular velocity table [rad/s]
+Actuator.JoukowskyDisk.wind_speed        = 0.0 10.0 12.0       # Wind speed table
+Actuator.JoukowskyDisk.num_blades        = 3                   # Number of wind turbine blades
+Actuator.JoukowskyDisk.vortex_core_size  = 4.0                 
+Actuator.JoukowskyDisk.use_tip_correction = true                # Turn on tip correction
+Actuator.JoukowskyDisk.use_root_correction = true                # Turn on root correction
+
+#---- sample defs ----
+sampling.labels                          = hhplane1 rotorplane centerline radial1 radial2
+sampling.hhplane1.type                   = PlaneSampler        
+sampling.hhplane1.num_points             = 193 193             
+sampling.hhplane1.origin                 = -192.0 -192.0 0.0   
+sampling.hhplane1.axis1                  = 384.0 0.0 0.0       
+sampling.hhplane1.axis2                  = 0.0 384.0 0.0       
+sampling.hhplane1.normal                 = 0.0 0.0 0.0         
+sampling.hhplane1.offsets                = 0                   
+sampling.rotorplane.type                 = PlaneSampler        
+sampling.rotorplane.num_points           = 81 81               
+sampling.rotorplane.origin               = 0.0 -40.0 -40.0     
+sampling.rotorplane.axis1                = 0.0 80.0 0.0        
+sampling.rotorplane.axis2                = 0.0 0.0 80.0        
+sampling.rotorplane.normal               = 0.0 0.0 0.0         
+sampling.rotorplane.offsets              = 0                   
+sampling.centerline.type                 = LineSampler         
+sampling.centerline.num_points           = 385                 
+sampling.centerline.start                = -192.0 0.0 0.0      
+sampling.centerline.end                  = 192.0 0.0 0.0       
+sampling.radial1.type                    = LineSampler         
+sampling.radial1.num_points              = 81                  
+sampling.radial1.start                   = 0.0 -20.0 0.0       
+sampling.radial1.end                     = 0.0 20.0 0.0        
+sampling.radial2.type                    = LineSampler         
+sampling.radial2.num_points              = 81                  
+sampling.radial2.start                   = 0.0 0.0 -20.0       
+sampling.radial2.end                     = 0.0 0.0 20.0        
+
+#---- tagging defs ----
+tagging.labels                           = box1 box2 box3 box4 
+tagging.box1.type                        = GeometryRefinement  
+tagging.box1.shapes                      = box1                
+tagging.box1.level                       = 0                   
+tagging.box1.box1.type                   = box                 
+tagging.box1.box1.origin                 = -64.0 -64.0 0.0     
+tagging.box1.box1.xaxis                  = 128.0 0.0 0.0       
+tagging.box1.box1.yaxis                  = 0.0 128.0 0.0       
+tagging.box1.box1.zaxis                  = 0.0 0.0 128.0       
+tagging.box2.type                        = GeometryRefinement  
+tagging.box2.shapes                      = box2                
+tagging.box2.level                       = 0                   
+tagging.box2.box2.type                   = box                 
+tagging.box2.box2.origin                 = 71.0 -64.0 0.0      
+tagging.box2.box2.xaxis                  = 128.0 0.0 0.0       
+tagging.box2.box2.yaxis                  = 0.0 128.0 0.0       
+tagging.box2.box2.zaxis                  = 0.0 0.0 128.0       
+tagging.box3.type                        = GeometryRefinement  
+tagging.box3.shapes                      = box3                
+tagging.box3.level                       = 0                   
+tagging.box3.box3.type                   = box                 
+tagging.box3.box3.origin                 = -64.0 71.0 0.0      
+tagging.box3.box3.xaxis                  = 128.0 0.0 0.0       
+tagging.box3.box3.yaxis                  = 0.0 128.0 0.0       
+tagging.box3.box3.zaxis                  = 0.0 0.0 128.0       
+tagging.box4.type                        = GeometryRefinement  
+tagging.box4.shapes                      = box4                
+tagging.box4.level                       = 0                   
+tagging.box4.box4.type                   = box                 
+tagging.box4.box4.origin                 = 71.0 71.0 0.0       
+tagging.box4.box4.xaxis                  = 128.0 0.0 0.0       
+tagging.box4.box4.yaxis                  = 0.0 128.0 0.0       
+tagging.box4.box4.zaxis                  = 0.0 0.0 128.0       
+
+#---- actuator defs ----
+Actuator.labels                          = WTG01 WTG02 WTG03 WTG04
+Actuator.WTG01.type                      = JoukowskyDisk       
+Actuator.WTG01.base_position             = 0.0 0.0 0.0         
+Actuator.WTG01.num_blades                = 3                   
+Actuator.WTG01.Actuator.use_tip_correction = true                
+Actuator.WTG01.Actuator.use_root_correction = true                
+Actuator.WTG02.type                      = JoukowskyDisk       
+Actuator.WTG02.base_position             = 135.0 0.0 0.0       
+Actuator.WTG02.num_blades                = 3                   
+Actuator.WTG02.Actuator.use_tip_correction = true                
+Actuator.WTG02.Actuator.use_root_correction = true                
+Actuator.WTG03.type                      = JoukowskyDisk       
+Actuator.WTG03.base_position             = 0.0 135.0 0.0       
+Actuator.WTG03.num_blades                = 3                   
+Actuator.WTG03.Actuator.use_tip_correction = true                
+Actuator.WTG03.Actuator.use_root_correction = true                
+Actuator.WTG04.type                      = JoukowskyDisk       
+Actuator.WTG04.base_position             = 135.0 135.0 0.0     
+Actuator.WTG04.num_blades                = 3                   
+Actuator.WTG04.Actuator.use_tip_correction = true                
+Actuator.WTG04.Actuator.use_root_correction = true                
+
+#---- extra params ----
+#== END AMR-WIND INPUT ==
